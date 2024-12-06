@@ -15,7 +15,7 @@ function Movie() {
           if (res.status === 200 && res.data.Search) {
             setData(res.data.Search);
           } else {
-            setData([]);
+            setData([])
           }
         })
         .catch((err) => {
@@ -47,7 +47,11 @@ function Movie() {
         {data && data.length > 0 ? (
           data.map((el, index) => (
             <div key={index} className="flex flex-col items-center mb-[10px]">
-              <img src="" alt="" />
+              <img
+                src={el.Poster !== "N/A" ? el.Poster : "default_image_url.jpg"}
+                alt={el.Title}
+                className="w-[200px] h-[300px] object-contain"
+              />
               <p className="mt-[5px] text-center">{el.Title}</p>
             </div>
           ))

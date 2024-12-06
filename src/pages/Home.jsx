@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const [weather, setWeather] = useState("");
   const [data, setData] = useState(null);
   const TOKEN = "e3b2b4ada691d782341413e2952e86e4";
+  const navigate = useNavigate()
 
   function handleClick(e) {
     e.preventDefault();
@@ -21,6 +23,9 @@ function Home() {
           console.log(err);
         });
     }
+  }
+  function handleUser(){
+    navigate('/users')
   }
 
   return (
@@ -45,6 +50,7 @@ function Home() {
           <h2>SHamol tezligi: {data.wind.speed} m/s</h2>
         </div>
       )}
+      <button className="btn bg-blue-600 mt-[30px] text-white p-[12px] rounded-md" onClick={handleUser}>Users</button>
     </div>
   );
 }

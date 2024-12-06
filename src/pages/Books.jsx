@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Books() {
   const [bookname, setBookname] = useState("");
   const [bookposter, setBookposter] = useState("");
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate()
 
   function handleAdd(e) {
     e.preventDefault();
@@ -21,7 +23,9 @@ function Books() {
     );
     setBooks(updatedBooks);
   }
-
+  function handleMovies(){
+    navigate('/movie')
+  }
   return (
     <div className="border w-[350px] p-[10px] mx-auto rounded-md mt-[50px]">
       <h1 className="text-center">Add books</h1>
@@ -64,6 +68,7 @@ function Books() {
             </div>
           ))}
       </div>
+      <button className="btn w-full bg-blue-600 mt-[30px] text-white p-[12px] rounded-md" onClick={handleMovies}>Movies</button>
     </div>
   );
 }

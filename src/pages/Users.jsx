@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Users() {
   const [data, setData] = useState([]);
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const navigate = useNavigate()
   useEffect(() => {
     axios
       .get(`https://jsonplaceholder.typicode.com/users`)
@@ -26,6 +28,9 @@ function Users() {
     let copied = [...data];
     copied.push(user)
     setData(copied)
+  }
+  function handleBooks(){
+    navigate('/books')
   }
   return (
     <div className="max-w-[800px] mx-auto">
@@ -51,7 +56,9 @@ function Users() {
               </div>
             );
           })}
+          <button className="btn w-full bg-blue-600 mt-[30px] text-white p-[12px] rounded-md" onClick={handleBooks}>Books</button>
       </div>
+
     </div>
   );
 }
