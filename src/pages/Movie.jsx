@@ -4,13 +4,12 @@ import axios from "axios";
 function Movie() {
   const [movie, setMovie] = useState("");
   const [data, setData] = useState(null);
-  const TOKEN = "1cbb9b8e";
 
   function handleClick(e) {
     e.preventDefault();
     if (movie) {
       axios
-        .get(`http://www.omdbapi.com/?s=${movie}&apikey=${TOKEN}`)
+        .get(`http://www.omdbapi.com/?s=${movie}&apikey=${import.meta.env.VITE_API_MOVIE}`)
         .then((res) => {
           if (res.status === 200 && res.data.Search) {
             setData(res.data.Search);
